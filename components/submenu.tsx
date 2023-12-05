@@ -8,7 +8,9 @@ import { Badge } from "./ui/badge";
 
 export default function Submenu({
   items,
+  className,
 }: {
+  className?: string;
   items: {
     link: string;
     title: string;
@@ -20,7 +22,7 @@ export default function Submenu({
   const pathname = usePathname();
 
   return (
-    <nav className="border-b flex px-4">
+    <nav className={cn("border-b flex", className)}>
       {items.map(({ link, title, icon, counter, strict }, i) => (
         <div
           key={i}

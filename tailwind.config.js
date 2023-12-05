@@ -12,7 +12,7 @@ module.exports = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1280px",
       },
     },
     extend: {
@@ -72,6 +72,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
       },
     },
   },
