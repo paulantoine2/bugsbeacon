@@ -6,6 +6,7 @@ import {
   BellIcon,
   CaretSortIcon,
   ChevronDownIcon,
+  CommitIcon,
   DashboardIcon,
   LayersIcon,
   Link1Icon,
@@ -37,12 +38,6 @@ export default function ProjectLayout({
       counter: 769,
     },
     {
-      title: "Victims",
-      link: `/${params.org}/projects/${params.project}/issues/${params.issue}/victims`,
-      icon: <PersonIcon className="mr-2" />,
-      counter: 34,
-    },
-    {
       title: "Related",
       link: `/${params.org}/projects/${params.project}/issues/${params.issue}/related`,
       icon: <Link1Icon className="mr-2" />,
@@ -52,7 +47,7 @@ export default function ProjectLayout({
 
   return (
     <div className="container">
-      <div className="py-4 flex flex-row">
+      <div className="py-10 flex flex-row">
         <div className="flex-1">
           <TypographyH2>TypeError</TypographyH2>
           <div className="text-muted-foreground text-sm">

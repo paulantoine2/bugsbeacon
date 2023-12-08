@@ -22,7 +22,7 @@ export default function Submenu({
   const pathname = usePathname();
 
   return (
-    <nav className={cn("border-b flex", className)}>
+    <nav className={cn("border-b flex gap-2", className)}>
       {items.map(({ link, title, icon, counter, strict }, i) => (
         <div
           key={i}
@@ -33,12 +33,12 @@ export default function Submenu({
               : "text-muted-foreground "
           )}
         >
-          <Button asChild variant="ghost">
+          <Button asChild className="px-2 h-8" variant="ghost">
             <Link href={link}>
-              {icon}
+              {/* {icon} */}
               {title}
               {counter && (
-                <Badge className="ml-2" variant="outline">
+                <Badge className="ml-2" variant="secondary">
                   {counter}
                 </Badge>
               )}

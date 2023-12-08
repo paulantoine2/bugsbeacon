@@ -24,7 +24,7 @@ export default function ProjectLayout({
       link: `/${params.org}/projects/${params.project}/issues`,
       title: "Issues",
       icon: <RadiobuttonIcon className="mr-2" />,
-      counter: 345,
+      counter: 5,
     },
     {
       link: `/${params.org}/projects/${params.project}/alerts`,
