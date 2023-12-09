@@ -43,7 +43,7 @@ export default function Chart({
   const { array, max } = generateArray();
   return (
     <ResponsiveContainer width={width} height={height}>
-      <AreaChart data={array}>
+      <AreaChart data={array} margin={{ top: 0, left: 0, right: 0, bottom: 0 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.5} />
@@ -70,7 +70,7 @@ export default function Chart({
         {details && <Tooltip />}
         {details && <XAxis interval={2} />}
         <Area
-          // animationDuration={0}
+          animationDuration={0}
           dataKey="count"
           strokeWidth={2}
           stroke="#06b6d4"
