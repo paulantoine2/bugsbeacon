@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
+import { Badge, Tab, TabGroup, TabList } from "@tremor/react";
 
 export default function Submenu({
   items,
@@ -22,30 +22,23 @@ export default function Submenu({
   const pathname = usePathname();
 
   return (
-    <nav className={cn("border-b flex gap-2", className)}>
-      {items.map(({ link, title, icon, counter, strict }, i) => (
-        <div
-          key={i}
-          className={cn(
-            "py-1",
-            pathname === link || (!strict && pathname.startsWith(link))
-              ? "border-b-2 border-primary"
-              : "text-muted-foreground "
-          )}
-        >
-          <Button asChild className="px-2 h-8" variant="ghost">
+    <TabGroup
+      index={items.findIndex(
+        (item) =>
+          pathname === item.link ||
+          (!item.strict && pathname.startsWith(item.link))
+      )}
+    >
+      <TabList className={cn(className)}>
+        {items.map(({ link, title, icon, counter, strict }, i) => (
+          <Tab key={i}>
             <Link href={link}>
-              {/* {icon} */}
               {title}
-              {counter && (
-                <Badge className="ml-2" variant="secondary">
-                  {counter}
-                </Badge>
-              )}
+              {counter && <Badge className="ml-2">{counter}</Badge>}
             </Link>
-          </Button>
-        </div>
-      ))}
-    </nav>
+          </Tab>
+        ))}
+      </TabList>
+    </TabGroup>
   );
 }

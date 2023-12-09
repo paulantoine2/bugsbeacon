@@ -2,13 +2,7 @@ import Chart from "@/components/chart";
 import TagCard from "@/components/tag-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 import {
   Collapsible,
   CollapsibleContent,
@@ -33,6 +27,7 @@ import {
   CommitIcon,
   InfoCircledIcon,
 } from "@radix-ui/react-icons";
+import { AreaChart, Card, Col, Grid, Metric, Text } from "@tremor/react";
 import Link from "next/link";
 
 const browsers = [
@@ -65,67 +60,65 @@ const browserVersions = [
   },
 ];
 
+const data = [
+  {
+    Month: "Jan 21",
+    "Gross Volume": 2890,
+    "Successful Payments": 2400,
+    Customers: 4938,
+  },
+  {
+    Month: "Feb 21",
+    "Gross Volume": 1890,
+    "Successful Payments": 1398,
+    Customers: 2938,
+  },
+  // ...
+  {
+    Month: "Jan 22",
+    "Gross Volume": 3890,
+    "Successful Payments": 2980,
+    Customers: 2645,
+  },
+];
+
 export default function Issue() {
   return (
-    <div className="py-6 flex flex-col gap-12">
+    <main className="py-6 flex flex-col gap-12">
       <div>
-        <div className="grid grid-flow-col grid-cols-4 gap-6 mb-6">
-          <Card className="col-span-3">
-            <div className="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
-              <h3 className="tracking-tight text-sm font-medium">Events</h3>
-              <Button variant="outline">
-                <CalendarIcon className="mr-2" />
-                Last 30 days
-                <CaretSortIcon className="ml-2" />
-              </Button>
+        <Grid numItemsLg={6} className="gap-6 mt-6">
+          <Col numColSpanLg={4}>
+            <Card>
+              <Text>Events</Text>
+              <Metric>769</Metric>
+              <AreaChart
+                className="mt-8 h-44"
+                data={data}
+                categories={["Gross Volume"]}
+                index="Month"
+                // valueFormatter={valueFormatter}
+                showYAxis={false}
+                showLegend={false}
+              />
+            </Card>
+          </Col>
+          <Col numColSpanLg={2}>
+            <div className="space-y-6">
+              <Card>
+                <Text>Last seen</Text>
+                <Metric>3.3.0</Metric>
+              </Card>
+              <Card>
+                <Text>First seen</Text>
+                <Metric>3.0.0</Metric>
+              </Card>
+              <Card>
+                <Text>Affected users</Text>
+                <Metric>47</Metric>
+              </Card>
             </div>
-            <CardContent>
-              <div className="text-2xl font-bold">769</div>
-              <Chart width="100%" height={280} details />
-            </CardContent>
-          </Card>
-          <div className="flex flex-col gap-4">
-            <Card>
-              <div className="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
-                <h3 className="tracking-tight text-sm font-medium">
-                  Last seen
-                </h3>
-              </div>
-              <CardContent>
-                <div className="text-xl font-mono font-bold flex flex-row items-center gap-2">
-                  <CommitIcon className="w-6 h-6" />
-                  3.3.0
-                </div>
-                <p className="text-sm text-muted-foreground">3 days ago</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <div className="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
-                <h3 className="tracking-tight text-sm font-medium">
-                  First seen
-                </h3>
-              </div>
-              <CardContent>
-                <div className="text-xl font-mono font-bold flex flex-row items-center gap-2">
-                  <CommitIcon className="w-6 h-6" />
-                  3.4.2
-                </div>
-                <p className="text-sm  text-muted-foreground">2 hours ago</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <div className="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
-                <h3 className="tracking-tight text-sm font-medium">
-                  Affected users
-                </h3>
-              </div>
-              <CardContent>
-                <div className="text-xl font-bold">57</div>
-                <p className="text-sm  text-muted-foreground">10 today</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
+          </Col>
+        </Grid>
         <div className="grid grid-flow-col grid-cols-2 gap-6">
           <TagCard title="Browser" values={browsers} />
           <TagCard title="Browser version" values={browserVersions} />
@@ -211,6 +204,6 @@ export default function Issue() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

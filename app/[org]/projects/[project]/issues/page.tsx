@@ -7,6 +7,7 @@ import { TypographyH2 } from "@/components/ui/typography";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { CalendarIcon, CaretDownIcon } from "@radix-ui/react-icons";
+import { DateRangePicker, MultiSelect } from "@tremor/react";
 
 async function getData({ params }: { params: any }): Promise<Issue[]> {
   // Fetch data from your API here.
@@ -23,15 +24,11 @@ export default async function Issues({ params }: { params: any }) {
         <div className="flex items-center justify-between">
           <div className="flex flex-1 items-center space-x-2">
             <Input placeholder="Search issues..." className="h-9 flex-1" />
-            <Button variant="outline">
-              <CalendarIcon className="mr-2" />
-              Select Date Range
-              <CaretDownIcon className="ml-2" />
-            </Button>
-            <Button variant="outline">
-              All Environments
-              <CaretDownIcon className="ml-2" />
-            </Button>
+            <DateRangePicker
+              className="max-w-sm mx-auto"
+              enableSelect={false}
+            />
+            <MultiSelect></MultiSelect>
             <Button variant="outline">
               All Versions
               <CaretDownIcon className="ml-2" />
