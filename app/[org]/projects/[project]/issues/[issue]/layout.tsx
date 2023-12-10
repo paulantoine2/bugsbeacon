@@ -1,21 +1,11 @@
 import Submenu from "@/components/submenu";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { TypographyH2 } from "@/components/ui/typography";
-import {
-  BellIcon,
-  CaretSortIcon,
-  ChevronDownIcon,
-  CommitIcon,
-  DashboardIcon,
-  LayersIcon,
-  Link1Icon,
-  ListBulletIcon,
-  PersonIcon,
-  RadiobuttonIcon,
-  RocketIcon,
-} from "@radix-ui/react-icons";
+import { ChevronDownIcon } from "@heroicons/react/solid";
+
+import { Badge, Button, Grid, Metric, Subtitle, Title } from "@tremor/react";
 import Link from "next/link";
+import Actions from "./actions";
+import MetricsCards from "./metrics-cards";
+import { ExclamationCircleIcon, RewindIcon } from "@heroicons/react/outline";
 
 export default function ProjectLayout({
   children,
@@ -28,52 +18,40 @@ export default function ProjectLayout({
     {
       title: "Overview",
       link: `/${params.org}/projects/${params.project}/issues/${params.issue}`,
-      icon: <LayersIcon className="mr-2" />,
       strict: true,
     },
     {
       title: "Events",
       link: `/${params.org}/projects/${params.project}/issues/${params.issue}/events`,
-      icon: <ListBulletIcon className="mr-2" />,
       counter: 769,
     },
     {
       title: "Related",
       link: `/${params.org}/projects/${params.project}/issues/${params.issue}/related`,
-      icon: <Link1Icon className="mr-2" />,
       counter: 4,
     },
   ];
 
   return (
-    <div className="container">
-      <div className="py-10 flex flex-row">
+    <div className="container min-h-screen">
+      <div className="py-10 flex flex-row items-start">
         <div className="flex-1">
-          <TypographyH2>TypeError</TypographyH2>
-          <div className="text-muted-foreground text-sm">
-            Cannot read value (func) of undefined
-          </div>
+          <Metric>TypeError</Metric>
+          <Subtitle>Cannot read value (func) of undefined</Subtitle>
           <div className="flex gap-2 mt-2">
-            <Badge className="bg-red-500">Component crash</Badge>
-            <Badge className="bg-purple-500">Regression</Badge>
+            <Badge color="rose" size="xs">
+              Crash
+            </Badge>
+            <Badge color="purple" size="xs">
+              Regression
+            </Badge>
           </div>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline">
-            <RocketIcon className="mr-2" />
-            Production
-            <CaretSortIcon className="ml-2" />
-          </Button>
-          <Button variant="secondary">
-            Ignore
-            <ChevronDownIcon className="ml-2" />
-          </Button>
-          <Button>
-            Resolve
-            <ChevronDownIcon className="ml-2" />
-          </Button>
-        </div>
+        <Actions />
       </div>
+      <Grid numItemsLg={8} className="gap-6 pb-10">
+        <MetricsCards />
+      </Grid>
       <Submenu items={items} />
       {children}
     </div>

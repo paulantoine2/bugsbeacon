@@ -3,12 +3,13 @@
 import Link from "next/link";
 import { useSelectedLayoutSegments } from "next/navigation";
 import React from "react";
-import { Select } from "./ui/select";
-import { Button } from "./ui/button";
+
 import SANDBOX from "@/config/sandbox";
 import { CircleBackslashIcon, CircleIcon } from "@radix-ui/react-icons";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { AvatarImage } from "@radix-ui/react-avatar";
+import { Button, Select, SelectItem } from "@tremor/react";
+import Image from "next/image";
 
 export default function ProjectSelect({ org }: { org: string }) {
   const segment = useSelectedLayoutSegments();
@@ -21,16 +22,31 @@ export default function ProjectSelect({ org }: { org: string }) {
 
   return (
     <>
-      <span className="text-muted-foreground">/</span>
-      <Button asChild variant="ghost">
-        <Link href={`/${org}/projects/${project_slug}`}>
-          <Avatar className="h-5 w-5 mr-2">
-            <AvatarImage src="/react.svg" />
-            <AvatarFallback>P</AvatarFallback>
-          </Avatar>
-          {project.name}
-        </Link>
-      </Button>
+      <span>/</span>
+      <Select
+        className="max-w-xs ml-4"
+        value={project_slug}
+        enableClear={false}
+        icon={(props) => (
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="-10.5 -9.45 21 18.9"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            {...props}
+          >
+            <circle cx="0" cy="0" r="2" fill="#82D7F7"></circle>
+            <g stroke="#82D7F7" stroke-width="1" fill="none">
+              <ellipse rx="10" ry="4.5"></ellipse>
+              <ellipse rx="10" ry="4.5" transform="rotate(60)"></ellipse>
+              <ellipse rx="10" ry="4.5" transform="rotate(120)"></ellipse>
+            </g>
+          </svg>
+        )}
+      >
+        <SelectItem value={project_slug}>{project.name}</SelectItem>
+      </Select>
     </>
   );
 }

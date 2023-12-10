@@ -31,12 +31,12 @@ export default function Submenu({
     >
       <TabList className={cn(className)}>
         {items.map(({ link, title, icon, counter, strict }, i) => (
-          <Tab key={i}>
-            <Link href={link}>
+          <Link href={link} key={i}>
+            <Tab>
               {title}
-              {counter && <Badge className="ml-2">{counter}</Badge>}
-            </Link>
-          </Tab>
+              {/* {counter && <Badge className="ml-2">{counter}</Badge>} */}
+            </Tab>
+          </Link>
         ))}
       </TabList>
     </TabGroup>

@@ -1,12 +1,11 @@
-import { Input } from "@/components/ui/input";
-import { DataTable } from "../../data-table";
-import { columns, events } from "./columns";
+import { TextInput } from "@tremor/react";
+import EventsTable from "./events-table";
 
 export default function IssueEvents() {
   return (
     <div className="py-6 space-y-6">
-      <Input placeholder="Search events..." />
-      <DataTable columns={columns} data={events} />
+      <TextInput placeholder="Search events..." />
+      <EventsTable />
     </div>
   );
 }
