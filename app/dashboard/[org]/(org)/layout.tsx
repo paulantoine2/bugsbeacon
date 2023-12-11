@@ -15,10 +15,6 @@ export default function OrganizationLayout({
       strict: true,
     },
     {
-      link: `/${params.org}/projects`,
-      title: "Projects",
-    },
-    {
       link: `/${params.org}/usage`,
       title: "Usage",
     },

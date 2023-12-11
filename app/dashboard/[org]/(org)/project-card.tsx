@@ -10,6 +10,7 @@ import {
   Text,
   Title,
 } from "@tremor/react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -26,10 +27,23 @@ function generateArray() {
 
 const data = generateArray();
 
-export default function ProjectCard({ slug }: { slug: string }) {
+export default function ProjectCard({
+  slug,
+  org,
+}: {
+  slug: string;
+  org: string;
+}) {
   return (
     <Card>
-      <Title>react-app</Title>
+      <Image
+        width={24}
+        height={24}
+        alt="favicon"
+        src="./react.svg"
+        className="mb-2"
+      />
+      <Title>{slug}</Title>
       <Flex justifyContent="start" alignItems="baseline" className="space-x-2">
         <Metric>678</Metric>
         <Text>Error events</Text>
@@ -50,11 +64,10 @@ export default function ProjectCard({ slug }: { slug: string }) {
         size="sm"
         variant="light"
         iconPosition="right"
-        color="slate"
         className="mt-5"
         icon={ArrowRightIcon}
       >
-        <Link href={`projects/${slug}/issues`}>View issues</Link>
+        <Link href={`${org}/projects/${slug}/issues`}>View issues</Link>
       </Button>
     </Card>
   );

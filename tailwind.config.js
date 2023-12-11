@@ -52,16 +52,16 @@ module.exports = {
         "dark-tremor": {
           brand: {
             faint: "#0B1229", // custom
-            muted: "#09090b", // blue-950
+            muted: "#18181b", // blue-950
             subtle: "#27272a", // blue-800
             DEFAULT: "#e4e4e7", // blue-500
             emphasis: "#a1a1aa", // blue-400
             inverted: "#09090b", // gray-950
           },
           background: {
-            muted: "#131A2B", // custom
-            subtle: "#27272a", // gray-800
-            DEFAULT: "#09090B", // gray-900
+            muted: "#18181b", // custom
+            subtle: "#18181b", // gray-800
+            DEFAULT: "#09090b", // gray-900
             emphasis: "#d4d4d8", // gray-300
           },
           border: {
@@ -103,6 +103,9 @@ module.exports = {
         "tremor-default": ["0.875rem", { lineHeight: "1.25rem" }],
         "tremor-title": ["1.125rem", { lineHeight: "1.75rem" }],
         "tremor-metric": ["1.875rem", { lineHeight: "2.25rem" }],
+      },
+      fontFamily: {
+        sans: ["Geist"],
       },
     },
   },

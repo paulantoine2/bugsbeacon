@@ -36,7 +36,7 @@ export default function ProjectLayout({
   return (
     <div>
       <Submenu items={items} className="px-4" />
-      {children}
+      <div>{children}</div>
     </div>
   );
 }
