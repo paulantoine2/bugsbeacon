@@ -13,7 +13,6 @@ export default function ComLayout({ children }: { children: React.ReactNode }) {
               <img src="/logo.svg" width={30} />
               <span className="text-white font-black text-xl">BugsBeacon</span>
             </div>
-
             <Button variant="light">
               <Link href="/">Product</Link>
             </Button>
@@ -28,7 +27,7 @@ export default function ComLayout({ children }: { children: React.ReactNode }) {
             </Button>
           </Flex>
           <Flex justifyContent="end" alignItems="center" className="gap-4">
-            <Button variant="primary">
+            <Button variant="secondary" className="!border-zinc-800">
               <Link href="/dashboard/acme/">Sandbox</Link>
             </Button>
           </Flex>

@@ -1,6 +1,7 @@
 import {
   BellIcon,
   CheckIcon,
+  CodeIcon,
   HeartIcon,
   MapIcon,
   PresentationChartLineIcon,
@@ -16,13 +17,14 @@ import {
   Metric,
   Subtitle,
   Text,
+  TextInput,
   Title,
 } from "@tremor/react";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <main>
+    <main className="space-y-64 mb-64">
       <div className="container">
         <div className="flex flex-col items-center justify-center py-40">
           <h1 className="text-center text-tremor-content-emphasis dark:text-dark-tremor-content-emphasis scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
@@ -36,31 +38,30 @@ export default function Home() {
             modern front-end frameworks.
           </p>
           <Flex justifyContent="center" className="gap-2 mt-8">
-            <Button size="xl">Get started</Button>
-            <Button size="xl" variant="secondary">
+            <Button>Get started</Button>
+            <Button variant="secondary" className="!border-zinc-800">
               Sandbox
             </Button>
           </Flex>
         </div>
         <img
           src="/landing1.png"
-          className="w-[80%] mx-auto border border-tremor-border dark:border-dark-tremor-border rounded-tremor-default mb-40"
+          className="w-[80%] mx-auto border border-tremor-border dark:border-dark-tremor-border rounded-tremor-default "
           style={{
             boxShadow: "0px 0px 105px 45px rgba(249, 115, 22, 0.06)",
           }}
         />
       </div>
-      <div className="container">
-        <Metric className="text-center">Why BugsBeacon ?</Metric>
-        <p className="mt-4 text-center text-xl text-muted-foreground text-tremor-content dark:text-dark-tremor-content">
+      <div className="container text-center">
+        <Badge color="orange">Product</Badge>
+        <Metric className="my-2">Why BugsBeacon ?</Metric>
+        <Subtitle>
           BugsBeacon is minimalist bug have everything you need to help you fix
           fast.
-        </p>
+        </Subtitle>
         <Grid numItemsMd={2} className="mt-20 mb-40 gap-6">
           <Card className="space-y-2 row-span-2">
-            <span className="inline-flex flex-shrink-0 items-center bg-tremor-brand dark:bg-orange-500 text-tremor-brand-inverted dark:text-dark-tremor-brand-inverted border-tremor-brand-inverted dark:border-dark-tremor-brand-inverted ring-tremor-ring dark:ring-dark-tremor-ring rounded-tremor-default border-2 ring-1 px-1.5 py-1.5">
-              <SortAscendingIcon className="shrink-0 h-5 w-5" />
-            </span>
+            <SortAscendingIcon className="text-orange-500 h-8 w-8" />
             <Title>Automatic Error Grouping</Title>
             <Subtitle>
               Automatically group errors with similar stack traces and root
@@ -69,9 +70,7 @@ export default function Home() {
             <img src="/landing2.png" className="w-full" />
           </Card>
           <Card className="space-y-2">
-            <span className="inline-flex flex-shrink-0 items-center bg-tremor-brand dark:bg-orange-500 text-tremor-brand-inverted dark:text-dark-tremor-brand-inverted border-tremor-brand-inverted dark:border-dark-tremor-brand-inverted ring-tremor-ring dark:ring-dark-tremor-ring rounded-tremor-default border-2 ring-1 px-1.5 py-1.5">
-              <MapIcon className="shrink-0 h-5 w-5" />
-            </span>
+            <CodeIcon className="text-orange-500 h-8 w-8" />
             <Title>Source Map Support</Title>
             <Subtitle>
               Easily pinpoint issues in your minified JS code directly from the
@@ -79,18 +78,14 @@ export default function Home() {
             </Subtitle>
           </Card>
           <Card className="space-y-2">
-            <span className="inline-flex flex-shrink-0 items-center bg-tremor-brand dark:bg-orange-500 text-tremor-brand-inverted dark:text-dark-tremor-brand-inverted border-tremor-brand-inverted dark:border-dark-tremor-brand-inverted ring-tremor-ring dark:ring-dark-tremor-ring rounded-tremor-default border-2 ring-1 px-1.5 py-1.5">
-              <StatusOnlineIcon className="shrink-0 h-5 w-5" />
-            </span>
+            <StatusOnlineIcon className="text-orange-500 h-8 w-8" />
             <Title>Real-Time Monitoring</Title>
             <Subtitle>
               Catch and resolve JavaScript errors as they happen.
             </Subtitle>
           </Card>
           <Card className="space-y-2 ">
-            <span className="inline-flex flex-shrink-0 items-center bg-tremor-brand dark:bg-orange-500 text-tremor-brand-inverted dark:text-dark-tremor-brand-inverted border-tremor-brand-inverted dark:border-dark-tremor-brand-inverted ring-tremor-ring dark:ring-dark-tremor-ring rounded-tremor-default border-2 ring-1 px-1.5 py-1.5">
-              <HeartIcon className="shrink-0 h-5 w-5" />
-            </span>
+            <HeartIcon className="text-orange-500 h-8 w-8" />
             <Title>React friendly</Title>
             <Subtitle>
               Seamlessly integrates with React error boundaries and famous
@@ -98,9 +93,7 @@ export default function Home() {
             </Subtitle>
           </Card>
           <Card className="space-y-2 row-span-2">
-            <span className="inline-flex flex-shrink-0 items-center bg-tremor-brand dark:bg-orange-500 text-tremor-brand-inverted dark:text-dark-tremor-brand-inverted border-tremor-brand-inverted dark:border-dark-tremor-brand-inverted ring-tremor-ring dark:ring-dark-tremor-ring rounded-tremor-default border-2 ring-1 px-1.5 py-1.5">
-              <PresentationChartLineIcon className="shrink-0 h-5 w-5" />
-            </span>
+            <PresentationChartLineIcon className="text-orange-500 h-8 w-8" />
             <Title>Detailed Insights</Title>
             <Subtitle>
               Deep dive into error reports with comprehensive analytics.
@@ -108,9 +101,7 @@ export default function Home() {
             <img src="/landing3.png" className="w-full" />
           </Card>
           <Card className="space-y-2">
-            <span className="inline-flex flex-shrink-0 items-center bg-tremor-brand dark:bg-orange-500 text-tremor-brand-inverted dark:text-dark-tremor-brand-inverted border-tremor-brand-inverted dark:border-dark-tremor-brand-inverted ring-tremor-ring dark:ring-dark-tremor-ring rounded-tremor-default border-2 ring-1 px-1.5 py-1.5">
-              <BellIcon className="shrink-0 h-5 w-5" />
-            </span>
+            <BellIcon className="text-orange-500 h-8 w-8" />
             <Title>Instant Alerts</Title>
             <Subtitle>
               Get notified instantly about critical issues affecting your users.
@@ -118,12 +109,10 @@ export default function Home() {
           </Card>
         </Grid>
       </div>
-      <div className="container">
-        <Metric className="text-center">Pay as you grow</Metric>
-        <p className="mt-4 text-center text-xl text-muted-foreground text-tremor-content dark:text-dark-tremor-content">
-          BugsBeacon is minimalist but have everything you need to help you fix
-          fast.
-        </p>
+      <div className="container text-center">
+        <Badge color="orange">Pricing</Badge>
+        <Metric className="text-center my-2">Pay as you grow</Metric>
+        <Subtitle>Predictable pricing, no surprises</Subtitle>
         <Grid numItemsMd={6} className="mt-20 mb-40 gap-6">
           <div></div>
           <Card decorationColor="zinc" className="col-span-2" decoration="top">
@@ -160,7 +149,9 @@ export default function Home() {
                 React SDK
               </Text>
             </div>
-            <Button className="w-full">Get started</Button>
+            <Button className="w-full" disabled>
+              Available soon
+            </Button>
           </Card>
           <Card
             decorationColor="orange"
@@ -189,7 +180,7 @@ export default function Home() {
               </Text>
               <Text>
                 <CheckIcon className="h-6 mr-2 text-orange-500 inline-block" />{" "}
-                50,000 Events
+                50,000 Events (+5€ / extra 50,000)
               </Text>
               <Text>
                 <CheckIcon className="h-6 mr-2 text-orange-500 inline-block" />{" "}
@@ -200,9 +191,30 @@ export default function Home() {
                 React SDK
               </Text>
             </div>
-            <Button className=" w-full">Get started</Button>
+            <Button className="w-full" disabled>
+              Available soon
+            </Button>
           </Card>
         </Grid>
+      </div>
+      <div className="container mb-40">
+        <Card
+          style={{
+            backgroundImage: "url('./bg.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "top -200px center",
+          }}
+        >
+          <div className="max-w-md mx-auto mt-10 mb-32 text-center">
+            <Metric className="mb-4">
+              Get product updates and be notified of the launch.
+            </Metric>
+            <Flex className="gap-2">
+              <TextInput placeholder="email@example.com" />
+              <Button>Sign up</Button>
+            </Flex>
+          </div>
+        </Card>
       </div>
     </main>
   );

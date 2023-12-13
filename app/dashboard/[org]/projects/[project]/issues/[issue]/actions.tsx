@@ -7,7 +7,12 @@ import React from "react";
 export default function Actions() {
   return (
     <div className="flex gap-2">
-      <Button variant="secondary" iconPosition="right" icon={ChevronDownIcon}>
+      <Button
+        variant="secondary"
+        iconPosition="right"
+        icon={ChevronDownIcon}
+        className="!border-zinc-800"
+      >
         Ignore
       </Button>
       <Button iconPosition="right" icon={ChevronDownIcon}>

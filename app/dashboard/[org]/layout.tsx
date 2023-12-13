@@ -25,7 +25,7 @@ export default function UserLayout({
           <ProjectSelect org={params.org} />
         </div>
         <div className="flex items-center gap-6">
-          <Button variant="secondary">
+          <Button variant="secondary" className="!border-zinc-800">
             <Link href="/">Feedback</Link>
           </Button>
           <Button variant="light">
