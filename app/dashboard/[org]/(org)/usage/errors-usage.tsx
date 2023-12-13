@@ -54,7 +54,7 @@ export default function ErrorsUsage() {
         data={data}
         index="Range"
         categories={["Accepted", "Dropped"]}
-        colors={["cyan", "red"]}
+        colors={["orange", "red"]}
         stack={true}
         yAxisWidth={60}
       />

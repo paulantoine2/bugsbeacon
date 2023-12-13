@@ -77,7 +77,7 @@ export default function EventsCard() {
         data={data.array}
         index="date"
         categories={["crash", "count"]}
-        colors={["rose", "cyan"]}
+        colors={["rose", "orange"]}
         showYAxis={true}
         showLegend={true}
         startEndOnly

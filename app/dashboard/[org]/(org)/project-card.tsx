@@ -53,7 +53,7 @@ export default function ProjectCard({
         data={data.array}
         index="index"
         categories={["count"]}
-        colors={["cyan"]}
+        colors={["orange"]}
         showXAxis={true}
         showGridLines={false}
         startEndOnly={true}

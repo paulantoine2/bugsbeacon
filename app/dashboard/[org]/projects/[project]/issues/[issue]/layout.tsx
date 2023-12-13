@@ -17,17 +17,17 @@ export default function ProjectLayout({
   const items = [
     {
       title: "Overview",
-      link: `/${params.org}/projects/${params.project}/issues/${params.issue}`,
+      link: `/dashboard/${params.org}/projects/${params.project}/issues/${params.issue}`,
       strict: true,
     },
     {
       title: "Events",
-      link: `/${params.org}/projects/${params.project}/issues/${params.issue}/events`,
+      link: `/dashboard/${params.org}/projects/${params.project}/issues/${params.issue}/events`,
       counter: 769,
     },
     {
       title: "Related",
-      link: `/${params.org}/projects/${params.project}/issues/${params.issue}/related`,
+      link: `/dashboard/${params.org}/projects/${params.project}/issues/${params.issue}/related`,
       counter: 4,
     },
   ];

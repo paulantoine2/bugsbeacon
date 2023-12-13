@@ -10,20 +10,20 @@ export default function OrganizationLayout({
 }) {
   const items = [
     {
-      link: `/${params.org}`,
+      link: `/dashboard/${params.org}`,
       title: "Dashboard",
       strict: true,
     },
     {
-      link: `/${params.org}/usage`,
+      link: `/dashboard/${params.org}/usage`,
       title: "Usage",
     },
     {
-      link: `/${params.org}/plans`,
+      link: `/dashboard/${params.org}/plans`,
       title: "Plans",
     },
     {
-      link: `/${params.org}/settings`,
+      link: `/dashboard/${params.org}/settings`,
       title: "Settings",
     },
   ];

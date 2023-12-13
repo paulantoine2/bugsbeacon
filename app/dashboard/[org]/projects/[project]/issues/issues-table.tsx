@@ -105,7 +105,7 @@ function Chart() {
       data={data.array}
       index="index"
       categories={["count"]}
-      colors={["cyan"]}
+      colors={["orange"]}
       showXAxis={false}
       showGridLines={false}
       startEndOnly={false}

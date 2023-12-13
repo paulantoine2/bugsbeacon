@@ -15,19 +15,19 @@ export default function ProjectLayout({
 }) {
   const items = [
     {
-      link: `/${params.org}/projects/${params.project}`,
+      link: `/dashboard/${params.org}/projects/${params.project}`,
       title: "Dashboard",
       icon: <DashboardIcon className="mr-2" />,
       strict: true,
     },
     {
-      link: `/${params.org}/projects/${params.project}/issues`,
+      link: `/dashboard/${params.org}/projects/${params.project}/issues`,
       title: "Issues",
       icon: <RadiobuttonIcon className="mr-2" />,
       counter: 5,
     },
     {
-      link: `/${params.org}/projects/${params.project}/alerts`,
+      link: `/dashboard/${params.org}/projects/${params.project}/alerts`,
       title: "Alerts",
       icon: <BellIcon className="mr-2" />,
       counter: 2,

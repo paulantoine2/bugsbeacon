@@ -9,7 +9,7 @@ export default function IssueRelated() {
       <Callout
         title="What are related issues ?"
         icon={InformationCircleIcon}
-        color="cyan"
+        color="orange"
       >
         Related issues have the same Error thrown but a different Stack trace.
         In other words, their stack trace have only the first frame in common.
