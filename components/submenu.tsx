@@ -1,10 +1,9 @@
 "use client";
-import { cn } from "@/lib/utils";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
+import { Tab, TabGroup, TabList } from "@tremor/react";
 
 export default function Submenu({
   items,
@@ -22,30 +21,23 @@ export default function Submenu({
   const pathname = usePathname();
 
   return (
-    <nav className={cn("border-b flex gap-2", className)}>
-      {items.map(({ link, title, icon, counter, strict }, i) => (
-        <div
-          key={i}
-          className={cn(
-            "py-1",
-            pathname === link || (!strict && pathname.startsWith(link))
-              ? "border-b-2 border-primary"
-              : "text-muted-foreground "
-          )}
-        >
-          <Button asChild className="px-2 h-8" variant="ghost">
-            <Link href={link}>
-              {/* {icon} */}
+    <TabGroup
+      index={items.findIndex(
+        (item) =>
+          pathname === item.link ||
+          (!item.strict && pathname.startsWith(item.link))
+      )}
+    >
+      <TabList className={className}>
+        {items.map(({ link, title, icon, counter, strict }, i) => (
+          <Link href={link} key={i}>
+            <Tab>
               {title}
-              {counter && (
-                <Badge className="ml-2" variant="secondary">
-                  {counter}
-                </Badge>
-              )}
-            </Link>
-          </Button>
-        </div>
-      ))}
-    </nav>
+              {/* {counter && <Badge className="ml-2">{counter}</Badge>} */}
+            </Tab>
+          </Link>
+        ))}
+      </TabList>
+    </TabGroup>
   );
 }

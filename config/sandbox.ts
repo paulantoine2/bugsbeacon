@@ -1,4 +1,4 @@
-import { Issue } from "@/app/[org]/projects/[project]/issues/columns";
+import { Issue } from "@/types/issue";
 import { subDays, subHours } from "date-fns";
 
 const SANDBOX: {
@@ -88,12 +88,93 @@ const SANDBOX: {
             },
           ],
         },
+        "portal-customer": {
+          name: "portal-customer",
+          issues: [
+            {
+              exception_name: "TypeError",
+              exception_message:
+                "Cannot read properties of undefined (reading 'key')",
+              events: 12,
+              victims: 1,
+              first_seen: subDays(new Date(), 4).toISOString(),
+              last_seen: subDays(new Date(), 3).toISOString(),
+              first_seen_version: "3.0.0",
+              last_seen_version: "3.0.0",
+              id: "1",
+              is_crash: true,
+              is_regression: true,
+            },
+            {
+              exception_name: "Error",
+              exception_message:
+                "Cannot read properties of undefined (reading 'key')",
+              events: 34,
+              victims: 12,
+              first_seen: subDays(new Date(), 5).toISOString(),
+              last_seen: subDays(new Date(), 4).toISOString(),
+              first_seen_version: "3.0.0",
+              last_seen_version: "3.4.2",
+              id: "2",
+              is_crash: false,
+              is_regression: true,
+            },
+            {
+              exception_name: "Error",
+              exception_message:
+                "Cannot read properties of undefined (reading 'key')",
+              events: 34,
+              victims: 12,
+              first_seen: subDays(new Date(), 5).toISOString(),
+              last_seen: subHours(new Date(), 4).toISOString(),
+              first_seen_version: "1.0.0",
+              last_seen_version: "3.0.0",
+              id: "3",
+              is_crash: false,
+              is_regression: false,
+            },
+            {
+              exception_name: "Error",
+              exception_message:
+                "Cannot read properties of undefined (reading 'key')",
+              events: 34,
+              victims: 12,
+              first_seen: subDays(new Date(), 5).toISOString(),
+              last_seen: subHours(new Date(), 4).toISOString(),
+              first_seen_version: "1.0.0",
+              last_seen_version: "3.0.0",
+              id: "3",
+              is_crash: false,
+              is_regression: false,
+            },
+            {
+              exception_name: "Error",
+              exception_message:
+                "Cannot read properties of undefined (reading 'key')",
+              events: 4520,
+              victims: 1200,
+              first_seen: subDays(new Date(), 5).toISOString(),
+              last_seen: subHours(new Date(), 4).toISOString(),
+              first_seen_version: "1.0.0",
+              last_seen_version: "3.0.0",
+              id: "3",
+              is_crash: false,
+              is_regression: false,
+            },
+          ],
+        },
       },
     },
   },
 };
 
-export const FRAMES = [
+export const FRAMES: {
+  filename: string;
+  call: string;
+  lineno: number;
+  colno: number;
+  code: Record<number, string>;
+}[] = [
   {
     filename: "src/utils.ts",
     call: "getCount",
