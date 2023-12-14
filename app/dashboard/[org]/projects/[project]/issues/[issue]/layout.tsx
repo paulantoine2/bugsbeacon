@@ -1,11 +1,8 @@
 import Submenu from "@/components/submenu";
-import { ChevronDownIcon } from "@heroicons/react/solid";
 
-import { Badge, Button, Grid, Metric, Subtitle, Title } from "@tremor/react";
-import Link from "next/link";
+import { Badge, Grid, Metric, Subtitle } from "@tremor/react";
 import Actions from "./actions";
 import MetricsCards from "./metrics-cards";
-import { ExclamationCircleIcon, RewindIcon } from "@heroicons/react/outline";
 
 export default function ProjectLayout({
   children,

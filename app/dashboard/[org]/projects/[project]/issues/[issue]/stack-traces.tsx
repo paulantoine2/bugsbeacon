@@ -1,7 +1,6 @@
 "use client";
 
 import { FRAMES } from "@/config/sandbox";
-import { cn } from "@/lib/utils";
 import {
   ExclamationCircleIcon,
   ShareIcon,
@@ -13,10 +12,7 @@ import {
   AccordionHeader,
   AccordionList,
   Badge,
-  Bold,
-  Card,
   Flex,
-  Icon,
   SearchSelect,
   SearchSelectItem,
   Select,
@@ -24,8 +20,6 @@ import {
   Tab,
   TabGroup,
   TabList,
-  TabPanel,
-  TabPanels,
   Text,
   Title,
 } from "@tremor/react";
@@ -95,14 +89,17 @@ export default function StackTraces() {
                 {Object.keys(frame.code).map((lineno) => (
                   <div
                     key={lineno}
-                    className={cn(
-                      "px-4 flex gap-2",
-                      frame.lineno === +lineno &&
-                        "bg-tremor-brand text-tremor-brand-inverted font-medium"
-                    )}
+                    className={
+                      "px-4 flex gap-2" +
+                      (frame.lineno === +lineno
+                        ? " bg-tremor-brand text-tremor-brand-inverted font-medium"
+                        : "")
+                    }
                   >
                     <span className="w-14">{lineno}</span>
-                    <span className="whitespace-pre">{frame.code[lineno]}</span>
+                    <span className="whitespace-pre">
+                      {frame.code[+lineno]}
+                    </span>
                   </div>
                 ))}
               </div>

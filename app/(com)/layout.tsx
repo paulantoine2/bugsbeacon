@@ -2,8 +2,7 @@ import { Button, Flex, Metric, Text } from "@tremor/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Logo from "./logo";
-import { TwitterLogoIcon } from "@radix-ui/react-icons";
+import Logo from "../../components/logo";
 
 export default function ComLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -11,7 +10,7 @@ export default function ComLayout({ children }: { children: React.ReactNode }) {
       <nav>
         <Flex className="container py-3">
           <Flex justifyContent="start" alignItems="center" className="gap-10">
-            <Logo />
+            <Logo showText />
             <Button variant="light">
               <Link href="/">Product</Link>
             </Button>
@@ -35,7 +34,7 @@ export default function ComLayout({ children }: { children: React.ReactNode }) {
       <div className="min-h-screen">{children}</div>
       <footer className="border-t border-tremor-border dark:border-dark-tremor-border">
         <div className="container py-10">
-          <Logo />
+          <Logo showText />
         </div>
       </footer>
     </div>

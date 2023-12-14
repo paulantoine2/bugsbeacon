@@ -168,7 +168,13 @@ const SANDBOX: {
   },
 };
 
-export const FRAMES = [
+export const FRAMES: {
+  filename: string;
+  call: string;
+  lineno: number;
+  colno: number;
+  code: Record<number, string>;
+}[] = [
   {
     filename: "src/utils.ts",
     call: "getCount",

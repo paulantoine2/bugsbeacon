@@ -44,9 +44,13 @@ export default function Home() {
             </Button>
           </Flex>
         </div>
-        <img
+        <Image
+          alt="landing"
           src="/landing1.png"
-          className="w-[80%] mx-auto border border-tremor-border dark:border-dark-tremor-border rounded-tremor-default "
+          width={971}
+          height={1028}
+          quality={100}
+          className="mx-auto border border-tremor-border dark:border-dark-tremor-border rounded-tremor-default "
           style={{
             boxShadow: "0px 0px 105px 45px rgba(249, 115, 22, 0.06)",
           }}
@@ -60,14 +64,16 @@ export default function Home() {
           fast.
         </Subtitle>
         <Grid numItemsMd={2} className="mt-20 mb-40 gap-6">
-          <Card className="space-y-2 row-span-2">
+          <Card className="space-y-2 row-span-2 flex flex-col">
             <SortAscendingIcon className="text-orange-500 h-8 w-8" />
             <Title>Automatic Error Grouping</Title>
             <Subtitle>
               Automatically group errors with similar stack traces and root
               causes.
             </Subtitle>
-            <img src="/landing2.png" className="w-full" />
+            <div className="relative w-full flex-1">
+              <Image src="/landing2.png" alt="Issues" fill />
+            </div>
           </Card>
           <Card className="space-y-2">
             <CodeIcon className="text-orange-500 h-8 w-8" />
@@ -92,13 +98,15 @@ export default function Home() {
               libraries like React Router and Redux.
             </Subtitle>
           </Card>
-          <Card className="space-y-2 row-span-2">
+          <Card className="space-y-2 row-span-2 flex flex-col">
             <PresentationChartLineIcon className="text-orange-500 h-8 w-8" />
             <Title>Detailed Insights</Title>
             <Subtitle>
               Deep dive into error reports with comprehensive analytics.
             </Subtitle>
-            <img src="/landing3.png" className="w-full" />
+            <div className="relative w-full flex-1 ">
+              <Image src="/landing3.png" alt="Events" fill />
+            </div>
           </Card>
           <Card className="space-y-2">
             <BellIcon className="text-orange-500 h-8 w-8" />

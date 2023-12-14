@@ -1,10 +1,9 @@
 "use client";
-import { cn } from "@/lib/utils";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { Button } from "./ui/button";
-import { Badge, Tab, TabGroup, TabList } from "@tremor/react";
+import { Tab, TabGroup, TabList } from "@tremor/react";
 
 export default function Submenu({
   items,
@@ -29,7 +28,7 @@ export default function Submenu({
           (!item.strict && pathname.startsWith(item.link))
       )}
     >
-      <TabList className={cn(className)}>
+      <TabList className={className}>
         {items.map(({ link, title, icon, counter, strict }, i) => (
           <Link href={link} key={i}>
             <Tab>

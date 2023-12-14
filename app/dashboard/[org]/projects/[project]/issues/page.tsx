@@ -1,19 +1,12 @@
 import SANDBOX from "@/config/sandbox";
-import Link from "next/link";
 
-import { TypographyH2 } from "@/components/ui/typography";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { CalendarIcon, CaretDownIcon } from "@radix-ui/react-icons";
 import {
   DateRangePicker,
   Metric,
-  MultiSelect,
   Select,
   SelectItem,
   Subtitle,
   TextInput,
-  Title,
 } from "@tremor/react";
 import IssuesTable from "./issues-table";
 import { Issue } from "@/types/issue";

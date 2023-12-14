@@ -1,3 +1,4 @@
+import Logo from "@/components/logo";
 import ProjectSelect from "@/components/project-select";
 
 import SANDBOX from "@/config/sandbox";
@@ -17,7 +18,7 @@ export default function UserLayout({
     <div className="min-h-screen">
       <nav className="flex items-center px-6 py-3 pb-2">
         <div className="flex items-center flex-1 text-tremor-brand dark:text-dark-tremor-brand">
-          <img src="/logo.svg" width={30} className="mr-4" />
+          <Logo />
           <span>/</span>
           <Button variant="light" className="mx-4">
             <Link href={`/dashboard/${params.org}`}>{org.name}</Link>

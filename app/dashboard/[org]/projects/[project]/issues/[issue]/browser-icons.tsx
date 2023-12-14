@@ -55,7 +55,7 @@ export const OperaIcon = () => (
   />
 );
 
-export const browser_icons = {
+export const browser_icons: Record<string, React.ReactElement> = {
   opera: <OperaIcon />,
   chrome: <ChromeIcon />,
   safari: <SafariIcon />,

@@ -1,7 +1,4 @@
-"use client";
-
-import { TagIcon, UserIcon } from "@heroicons/react/solid";
-import { Card, Col, Flex, Icon, Metric, Text } from "@tremor/react";
+import { Card, Col, Flex, Metric, Text } from "@tremor/react";
 import React from "react";
 
 export default function MetricsCards() {

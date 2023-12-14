@@ -1,22 +1,5 @@
-import {
-  ArrowNarrowRightIcon,
-  TrendingUpIcon,
-  TrendingDownIcon,
-} from "@heroicons/react/solid";
 import SANDBOX from "@/config/sandbox";
-import { CircleIcon, DashboardIcon } from "@radix-ui/react-icons";
-import {
-  AreaChart,
-  Button,
-  Card,
-  Flex,
-  Icon,
-  Metric,
-  Subtitle,
-  Text,
-  Title,
-} from "@tremor/react";
-import Link from "next/link";
+import { Metric } from "@tremor/react";
 
 import ProjectCard from "./project-card";
 

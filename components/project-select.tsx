@@ -1,15 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useSelectedLayoutSegments } from "next/navigation";
 import React from "react";
 
 import SANDBOX from "@/config/sandbox";
-import { CircleBackslashIcon, CircleIcon } from "@radix-ui/react-icons";
-import { Avatar, AvatarFallback } from "./ui/avatar";
-import { AvatarImage } from "@radix-ui/react-avatar";
-import { Button, Select, SelectItem } from "@tremor/react";
-import Image from "next/image";
+import { Select, SelectItem } from "@tremor/react";
 
 export default function ProjectSelect({ org }: { org: string }) {
   const segment = useSelectedLayoutSegments();

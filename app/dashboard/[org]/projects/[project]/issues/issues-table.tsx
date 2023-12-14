@@ -6,7 +6,6 @@ import {
   Badge,
   Card,
   Flex,
-  Subtitle,
   Table,
   TableBody,
   TableCell,
