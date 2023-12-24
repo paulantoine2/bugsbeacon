@@ -1,5 +1,3 @@
-import SANDBOX from "@/config/sandbox";
-
 import {
   DateRangePicker,
   Metric,
@@ -10,14 +8,27 @@ import {
 } from "@tremor/react";
 import IssuesTable from "./issues-table";
 import { Issue } from "@/types/issue";
+import { wait } from "@/api/utils";
+import { getIssues } from "@/api/issues/routes";
+import { getProjects } from "@/api/projects/routes";
+import { notFound } from "next/navigation";
 
-async function getData({ params }: { params: any }): Promise<Issue[]> {
-  // Fetch data from your API here.
-  return SANDBOX.orgs[params.org]?.projects[params.project]?.issues;
+async function getData(slug: string): Promise<Issue[]> {
+  const projects = await getProjects();
+
+  const project = projects.find((p) => p.slug === slug);
+
+  if (!project) return [];
+
+  return getIssues({ project_id: project.id });
 }
 
-export default async function Issues({ params }: { params: any }) {
-  const data = await getData({ params });
+export default async function Issues({
+  params,
+}: {
+  params: { project: string };
+}) {
+  const data = await getData(params.project);
 
   return (
     <div className="container py-10 min-h-screen">
@@ -33,7 +44,6 @@ export default async function Issues({ params }: { params: any }) {
               className="max-w-sm mx-auto"
               enableSelect={false}
             />
-
             <Select value="all" enableClear={false} className="w-auto">
               <SelectItem value="all">All Versions</SelectItem>
             </Select>

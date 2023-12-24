@@ -1,40 +1,40 @@
+import { getProjects } from "@/api/projects/routes";
 import Logo from "@/components/logo";
 import ProjectSelect from "@/components/project-select";
 
-import SANDBOX from "@/config/sandbox";
 import { Button, Text } from "@tremor/react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function UserLayout({
+export default async function UserLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: any;
 }) {
-  const org = SANDBOX.orgs[params.org];
+  const projects = await getProjects();
   return (
     <div className="min-h-screen">
       <nav className="flex items-center px-6 py-3 pb-2">
         <div className="flex items-center flex-1 text-tremor-brand dark:text-dark-tremor-brand">
           <Logo />
-          <span>/</span>
+          <span className="ml-4">/</span>
           <Button variant="light" className="mx-4">
-            <Link href={`/dashboard/${params.org}`}>{org.name}</Link>
+            <Link href={`/dashboard/${params.org}`}>Acme Sandbox</Link>
           </Button>
-          <ProjectSelect org={params.org} />
+          <ProjectSelect projects={projects} />
         </div>
         <div className="flex items-center gap-6">
           <Button variant="secondary" className="!border-zinc-800">
-            <Link href="/">Feedback</Link>
+            Feedback
           </Button>
-          <Button variant="light">
-            <Link href="/">Roadmap</Link>
-          </Button>
-          <Button variant="light">
-            <Link href="/">Docs</Link>
-          </Button>
+          <Link href="/roadmap">
+            <Button variant="light">Roadmap</Button>
+          </Link>
+          <Link href="/docs">
+            <Button variant="light">Docs</Button>
+          </Link>
 
           <Image
             src="/profile.jpg"

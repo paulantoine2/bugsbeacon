@@ -1,19 +1,26 @@
 "use client";
 
-import { useSelectedLayoutSegments } from "next/navigation";
+import { useRouter, useSelectedLayoutSegments } from "next/navigation";
 import React from "react";
 
-import SANDBOX from "@/config/sandbox";
 import { Select, SelectItem } from "@tremor/react";
+import { Project } from "@/api/projects/routes";
 
-export default function ProjectSelect({ org }: { org: string }) {
+export default function ProjectSelect({ projects }: { projects: Project[] }) {
   const segment = useSelectedLayoutSegments();
+  const router = useRouter();
 
   const project_slug = segment[0] === "projects" && segment[1];
+  const selected = projects.find((p) => p.slug === project_slug);
 
-  if (!project_slug) return null;
+  if (!selected || !project_slug) return null;
 
-  const project = SANDBOX.orgs[org]?.projects[project_slug];
+  const handleChange = (val: string) => {
+    const { pathname } = window.location;
+    const parts = pathname.split("/").slice(0, 4);
+    parts.push(val);
+    router.push(parts.join("/"));
+  };
 
   return (
     <>
@@ -22,25 +29,22 @@ export default function ProjectSelect({ org }: { org: string }) {
         className="max-w-xs ml-4"
         value={project_slug}
         enableClear={false}
-        icon={(props) => (
-          <svg
-            width="100%"
-            height="100%"
-            viewBox="-10.5 -9.45 21 18.9"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            {...props}
-          >
-            <circle cx="0" cy="0" r="2" fill="#82D7F7"></circle>
-            <g stroke="#82D7F7" stroke-width="1" fill="none">
-              <ellipse rx="10" ry="4.5"></ellipse>
-              <ellipse rx="10" ry="4.5" transform="rotate(60)"></ellipse>
-              <ellipse rx="10" ry="4.5" transform="rotate(120)"></ellipse>
-            </g>
-          </svg>
+        onValueChange={handleChange}
+        icon={() => (
+          <img src={`/projects/${selected.id}.png`} className="w-5 h-5" />
         )}
       >
-        <SelectItem value={project_slug}>{project.name}</SelectItem>
+        {projects.map((project) => (
+          <SelectItem
+            key={project.id}
+            value={project.slug}
+            icon={() => (
+              <img src={`/projects/${project.id}.png`} className="w-5 h-5" />
+            )}
+          >
+            {project.name}
+          </SelectItem>
+        ))}
       </Select>
     </>
   );

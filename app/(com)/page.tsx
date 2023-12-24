@@ -21,6 +21,7 @@ import {
   Title,
 } from "@tremor/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -38,10 +39,15 @@ export default function Home() {
             modern front-end frameworks.
           </p>
           <Flex justifyContent="center" className="gap-2 mt-8">
-            <Button>Get started</Button>
-            <Button variant="secondary" className="!border-zinc-800">
-              Sandbox
-            </Button>
+            <Link href="/dashboard/acme/">
+              <Button
+                variant="secondary"
+                size="lg"
+                className="!border-zinc-700"
+              >
+                Discover with Sandbox
+              </Button>
+            </Link>
           </Flex>
         </div>
         <Image

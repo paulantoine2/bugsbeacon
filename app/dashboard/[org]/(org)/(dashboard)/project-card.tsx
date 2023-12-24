@@ -1,5 +1,6 @@
 "use client";
 
+import { Project } from "@/api/projects/routes";
 import { ArrowRightIcon } from "@heroicons/react/solid";
 import {
   AreaChart,
@@ -14,24 +15,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-function generateArray() {
-  const array = [];
-  let max = 0;
-  for (let i = 1; i <= 30; i++) {
-    const count = Math.floor(Math.random() * 51); // Génère un nombre aléatoire entre 0 et 50
-    if (count > max) max = count;
-    array.push({ index: i, count: count });
-  }
-  return { array, max };
-}
-
-const data = generateArray();
-
 export default function ProjectCard({
-  slug,
+  project,
   org,
 }: {
-  slug: string;
+  project: Project;
   org: string;
 }) {
   return (
@@ -40,19 +28,19 @@ export default function ProjectCard({
         width={24}
         height={24}
         alt="favicon"
-        src="./react.svg"
+        src={`/projects/${project.id}.png`}
         className="mb-2"
       />
-      <Title>{slug}</Title>
+      <Title>{project.name}</Title>
       <Flex justifyContent="start" alignItems="baseline" className="space-x-2">
-        <Metric>678</Metric>
+        <Metric>{project.total_events}</Metric>
         <Text>Error events</Text>
       </Flex>
       <AreaChart
         className="mt-6 h-28"
-        data={data.array}
-        index="index"
-        categories={["count"]}
+        data={project.events}
+        index="date"
+        categories={["events"]}
         colors={["orange"]}
         showXAxis={true}
         showGridLines={false}
@@ -60,15 +48,17 @@ export default function ProjectCard({
         showYAxis={false}
         showLegend={false}
       />
-      <Button
-        size="sm"
-        variant="light"
-        iconPosition="right"
-        className="mt-5"
-        icon={ArrowRightIcon}
-      >
-        <Link href={`${org}/projects/${slug}/issues`}>View issues</Link>
-      </Button>
+      <Link href={`${org}/projects/${project.slug}/issues`}>
+        <Button
+          size="sm"
+          variant="light"
+          iconPosition="right"
+          className="mt-5"
+          icon={ArrowRightIcon}
+        >
+          View issues
+        </Button>
+      </Link>
     </Card>
   );
 }

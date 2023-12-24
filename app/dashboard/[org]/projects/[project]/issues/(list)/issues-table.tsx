@@ -37,14 +37,14 @@ export default function IssuesTable({ data }: { data: Issue[] }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row) => (
+          {data.map((row, i) => (
             <TableRow key={row.id}>
               <TableCell>
                 <Flex justifyContent="start" className="gap-2">
-                  <Title>
-                    <Link href={`issues/${row.id}`}>{row.exception_name}</Link>
-                  </Title>
-                  {row.is_crash && (
+                  <Link href={`issues/${row.id}`}>
+                    <Title>{row.issue_name}</Title>
+                  </Link>
+                  {row.has_crash && (
                     <Badge color="rose" icon={ExclamationCircleIcon} size="xs">
                       Crash
                     </Badge>
@@ -56,12 +56,12 @@ export default function IssuesTable({ data }: { data: Issue[] }) {
                   )}
                 </Flex>
 
-                {row.exception_message}
+                {row.issue_description}
               </TableCell>
               <TableCell>
                 <Text>{row.first_seen_version}</Text>
                 <Text>
-                  {formatDistanceToNowStrict(new Date(row.first_seen), {
+                  {formatDistanceToNowStrict(new Date(row.first_seen_event), {
                     addSuffix: true,
                   })}
                 </Text>
@@ -69,13 +69,13 @@ export default function IssuesTable({ data }: { data: Issue[] }) {
               <TableCell>
                 <Text>{row.last_seen_version}</Text>
                 <Text>
-                  {formatDistanceToNowStrict(new Date(row.last_seen), {
+                  {formatDistanceToNowStrict(new Date(row.last_seen_event), {
                     addSuffix: true,
                   })}
                 </Text>
               </TableCell>
-              <TableCell>{row.victims}</TableCell>
-              <TableCell>{row.events}</TableCell>
+              <TableCell>{row.affected_users}</TableCell>
+              <TableCell>{row.total_events}</TableCell>
               <TableCell width={250}>
                 <Chart />
               </TableCell>

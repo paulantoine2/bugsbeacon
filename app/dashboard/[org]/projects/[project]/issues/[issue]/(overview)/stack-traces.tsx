@@ -1,6 +1,5 @@
 "use client";
 
-import { FRAMES } from "@/config/sandbox";
 import {
   ExclamationCircleIcon,
   ShareIcon,
@@ -26,6 +25,14 @@ import {
 import React from "react";
 
 export default function StackTraces() {
+  const FRAMES: {
+    filename: string;
+    call: string;
+    lineno: number;
+    colno: number;
+    code?: Record<number, string>;
+  }[] = [];
+
   return (
     <div>
       <Flex className="w-full mb-6">
@@ -86,7 +93,7 @@ export default function StackTraces() {
             </AccordionHeader>
             <AccordionBody>
               <div className="flex flex-col gap-1 font-mono text-sm py-1 text-muted-foreground">
-                {Object.keys(frame.code).map((lineno) => (
+                {Object.keys(frame.code || {}).map((lineno) => (
                   <div
                     key={lineno}
                     className={
@@ -98,7 +105,7 @@ export default function StackTraces() {
                   >
                     <span className="w-14">{lineno}</span>
                     <span className="whitespace-pre">
-                      {frame.code[+lineno]}
+                      {frame.code?.[+lineno]}
                     </span>
                   </div>
                 ))}

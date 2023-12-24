@@ -19,10 +19,6 @@ export default function OrganizationLayout({
       title: "Usage",
     },
     {
-      link: `/dashboard/${params.org}/plans`,
-      title: "Plans",
-    },
-    {
       link: `/dashboard/${params.org}/settings`,
       title: "Settings",
     },

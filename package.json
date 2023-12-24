@@ -6,16 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen:build": "tsc scripts/gen.ts"
   },
   "dependencies": {
     "@faker-js/faker": "^8.3.1",
     "@headlessui/tailwindcss": "^0.2.0",
     "@heroicons/react": "1.0.6",
-    "@tremor/react": "^3.11.1",
+    "@tremor/react": "^3.12.1",
     "date-fns": "^2.30.0",
     "geist": "^1.2.0",
-    "next": "14.0.3",
+    "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18"
   },

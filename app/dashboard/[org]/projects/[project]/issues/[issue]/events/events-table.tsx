@@ -16,7 +16,7 @@ import {
 } from "@tremor/react";
 import { format } from "date-fns";
 import React from "react";
-import { browser_icons } from "../browser-icons";
+import { browser_icons } from "../(overview)/browser-icons";
 import { ExclamationCircleIcon } from "@heroicons/react/outline";
 
 export type Event = {

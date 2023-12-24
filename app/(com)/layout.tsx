@@ -25,9 +25,11 @@ export default function ComLayout({ children }: { children: React.ReactNode }) {
             </Button>
           </Flex>
           <Flex justifyContent="end" alignItems="center" className="gap-4">
-            <Button variant="secondary" className="!border-zinc-800">
-              <Link href="/dashboard/acme/">Sandbox</Link>
-            </Button>
+            <Link href="/dashboard/acme/">
+              <Button variant="secondary" className="!border-zinc-800">
+                Sandbox
+              </Button>
+            </Link>
           </Flex>
         </Flex>
       </nav>

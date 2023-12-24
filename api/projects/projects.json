@@ -1,0 +1,76 @@
+{
+  "results": [
+    {
+      "id": "4feb1177-c322-44ae-b8fe-e3c02c935ebf",
+      "name": "User portal",
+      "slug": "user-portal",
+      "total_events": 258,
+      "events": [
+        {
+          "date": "11 Dec",
+          "events": 78
+        },
+        {
+          "date": "12 Dec",
+          "events": 56
+        },
+        {
+          "date": "13 Dec",
+          "events": 70
+        },
+        {
+          "date": "14 Dec",
+          "events": 42
+        },
+        {
+          "date": "15 Dec",
+          "events": 12
+        },
+        {
+          "date": "16 Dec",
+          "events": 0
+        },
+        {
+          "date": "17 Dec",
+          "events": 0
+        }
+      ]
+    },
+    {
+      "id": "6afae66e-30f6-4308-8e1e-41f541f445db",
+      "name": "Backoffice",
+      "slug": "backoffice",
+      "total_events": 95,
+      "events": [
+        {
+          "date": "11 Dec",
+          "events": 0
+        },
+        {
+          "date": "12 Dec",
+          "events": 12
+        },
+        {
+          "date": "13 Dec",
+          "events": 43
+        },
+        {
+          "date": "14 Dec",
+          "events": 23
+        },
+        {
+          "date": "15 Dec",
+          "events": 11
+        },
+        {
+          "date": "16 Dec",
+          "events": 2
+        },
+        {
+          "date": "17 Dec",
+          "events": 4
+        }
+      ]
+    }
+  ]
+}
