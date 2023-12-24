@@ -12,23 +12,23 @@ export default function ComLayout({ children }: { children: React.ReactNode }) {
           <Flex justifyContent="start" alignItems="center" className="gap-10">
             <Logo showText />
             <Button variant="light">
-              <Link href="/">Product</Link>
+              <Link href="#product">Product</Link>
             </Button>
             <Button variant="light">
-              <Link href="/">Pricing</Link>
-            </Button>
-            <Button variant="light">
-              <Link href="/">Docs</Link>
+              <Link href="#pricing">Pricing</Link>
             </Button>
             <Button variant="light">
               <Link href="/">Blog</Link>
             </Button>
           </Flex>
           <Flex justifyContent="end" alignItems="center" className="gap-4">
-            <Link href="/dashboard/acme/">
+            <a href="https://sandbox.bugsbeacon.com">
               <Button variant="secondary" className="!border-zinc-800">
-                Sandbox
+                Discover with Sandbox
               </Button>
+            </a>
+            <Link href="/signin">
+              <Button>Get started</Button>
             </Link>
           </Flex>
         </Flex>

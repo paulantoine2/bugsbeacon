@@ -48,6 +48,9 @@ export default function Home() {
                 Discover with Sandbox
               </Button>
             </Link>
+            <Link href="/signin">
+              <Button size="lg">Get started</Button>
+            </Link>
           </Flex>
         </div>
         <Image

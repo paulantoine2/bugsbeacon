@@ -3,6 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import SupabaseProvider from "./supabase-provider";
 
 export const metadata: Metadata = {
   title: "BugsBeacon",
@@ -24,7 +25,8 @@ export default function RootLayout({
           GeistMono.variable
         }
       >
-        {children}
+        <SupabaseProvider>{children}</SupabaseProvider>
+
         <Analytics />
       </body>
     </html>
