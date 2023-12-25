@@ -20,11 +20,26 @@ export async function getSession() {
   }
 }
 
+export async function getOrganisation(id: string) {
+  const supabase = createServerSupabaseClient();
+  try {
+    const { data: organization } = await supabase
+      .from("organization")
+      .select()
+      .eq("id", id)
+      .single();
+    return organization;
+  } catch (error) {
+    console.error("Error:", error);
+    return null;
+  }
+}
+
 export async function getUserDetails() {
   const supabase = createServerSupabaseClient();
   try {
     const { data: userDetails } = await supabase
-      .from("users")
+      .from("user")
       .select("*")
       .single();
     return userDetails;

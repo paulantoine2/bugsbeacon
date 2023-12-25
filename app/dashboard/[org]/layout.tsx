@@ -1,18 +1,29 @@
 import { getProjects } from "@/api/projects/routes";
+import { getOrganisation, getUserDetails } from "@/app/supabase-server";
 import Logo from "@/components/logo";
 import ProjectSelect from "@/components/project-select";
+import { UserNav } from "@/components/user-nav";
 
 import { Button, Text } from "@tremor/react";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default async function UserLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: any;
+  params: { org: string };
 }) {
+  const [organization, user] = await Promise.all([
+    getOrganisation(params.org),
+    getUserDetails(),
+  ]);
+
+  if (!user) return redirect("/signin");
+  if (!organization) return redirect("/dashboard");
+
   const projects = await getProjects();
   return (
     <div className="min-h-screen">
@@ -21,7 +32,7 @@ export default async function UserLayout({
           <Logo />
           <span className="ml-4">/</span>
           <Button variant="light" className="mx-4">
-            <Link href={`/dashboard/${params.org}`}>Acme Sandbox</Link>
+            <Link href={`/dashboard/${params.org}`}>{organization.name}</Link>
           </Button>
           <ProjectSelect projects={projects} />
         </div>
@@ -36,16 +47,7 @@ export default async function UserLayout({
             <Button variant="light">Docs</Button>
           </Link>
 
-          <Image
-            src="/profile.jpg"
-            alt="profile"
-            width={28}
-            height={28}
-            className="rounded-full"
-          />
-          {/* <Avatar className="h-7 w-7">
-            <AvatarImage src="/profile.jpg" />
-          </Avatar> */}
+          <UserNav user={user} />
         </div>
       </nav>
       {children}
