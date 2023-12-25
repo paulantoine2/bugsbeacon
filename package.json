@@ -7,19 +7,29 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "gen:build": "tsc scripts/gen.ts"
+    "gen:build": "tsc scripts/gen.ts",
+    "generate-types": "npx supabase gen types typescript --project-id bkggiwxgnscedckkcvvp --schema public > types_db.ts"
   },
   "dependencies": {
     "@faker-js/faker": "^8.3.1",
+    "@headlessui/react": "^1.7.17",
     "@headlessui/tailwindcss": "^0.2.0",
     "@heroicons/react": "1.0.6",
+    "@hookform/resolvers": "^3.3.2",
+    "@supabase/auth-helpers-nextjs": "^0.8.7",
+    "@supabase/auth-ui-react": "^0.4.6",
+    "@supabase/auth-ui-shared": "^0.1.8",
+    "@supabase/supabase-js": "^2.39.1",
     "@tremor/react": "^3.12.1",
     "@vercel/analytics": "^1.1.1",
     "date-fns": "^2.30.0",
     "geist": "^1.2.0",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.49.2",
+    "sonner": "^1.2.4",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -29,6 +39,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
     "postcss": "^8",
+    "supabase": "^1.123.4",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }

@@ -28,6 +28,9 @@ export default function Home() {
     <main className="space-y-64 mb-64">
       <div className="container">
         <div className="flex flex-col items-center justify-center py-40">
+          <Badge color="red" className="mb-6">
+            Work in progress product
+          </Badge>
           <h1 className="text-center text-tremor-content-emphasis dark:text-dark-tremor-content-emphasis scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
             For those who likes <br />
             to{" "}
@@ -39,14 +42,17 @@ export default function Home() {
             modern front-end frameworks.
           </p>
           <Flex justifyContent="center" className="gap-2 mt-8">
-            <Link href="/dashboard/acme/">
+            <Link href="https://sandbox.bugsbeacon.com">
               <Button
                 variant="secondary"
                 size="lg"
-                className="!border-zinc-700"
+                className="!border-zinc-800"
               >
                 Discover with Sandbox
               </Button>
+            </Link>
+            <Link href="/signin">
+              <Button size="lg">Get started</Button>
             </Link>
           </Flex>
         </div>
@@ -62,7 +68,7 @@ export default function Home() {
           }}
         />
       </div>
-      <div className="container text-center">
+      <div className="container text-center" id="product">
         <Badge color="orange">Product</Badge>
         <Metric className="my-2">Why BugsBeacon ?</Metric>
         <Subtitle>
@@ -123,7 +129,7 @@ export default function Home() {
           </Card>
         </Grid>
       </div>
-      <div className="container text-center">
+      <div className="container text-center" id="pricing">
         <Badge color="orange">Pricing</Badge>
         <Metric className="text-center my-2">Pay as you grow</Metric>
         <Subtitle>Predictable pricing, no surprises</Subtitle>
