@@ -32,7 +32,7 @@ export default function Logo({ showText = false }: { showText?: boolean }) {
       </svg>
 
       {showText && (
-        <span className="text-white font-black text-xl">BugsBeacon</span>
+        <span className="text-white font-medium text-xl">BugsBeacon</span>
       )}
     </div>
   );

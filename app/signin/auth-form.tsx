@@ -11,7 +11,7 @@ export default function AuthForm() {
     <div className="flex flex-col space-y-4">
       <Auth
         supabaseClient={supabase}
-        providers={["github"]}
+        providers={["github", "gitlab"]}
         redirectTo={`${getURL()}/auth/callback`}
         onlyThirdPartyProviders
         appearance={{

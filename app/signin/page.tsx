@@ -3,8 +3,9 @@ import { getSession } from "@/app/supabase-server";
 import { redirect } from "next/navigation";
 import Logo from "@/components/logo";
 import AuthForm from "./auth-form";
-import { Button, Metric } from "@tremor/react";
+import { Button, Flex, Metric } from "@tremor/react";
 import Link from "next/link";
+import Navbar from "../(com)/navbar";
 
 export default async function SignIn() {
   const session = await getSession();
@@ -14,16 +15,24 @@ export default async function SignIn() {
   }
 
   return (
-    <div className="container py-10">
+    <div>
+      <nav>
+        <Flex className="container py-3">
+          <Flex justifyContent="start" alignItems="center" className="gap-10">
+            <Link href="/">
+              <Logo showText />
+            </Link>
+          </Flex>
+          <Navbar />
+        </Flex>
+      </nav>
       <div>
-        <Link href="/">
-          <Button variant="secondary">Back</Button>
-        </Link>
-      </div>
-      <div className="flex flex-col items-center gap-4">
-        <Logo />
-        <Metric className="text-align">Get started now</Metric>
-        <AuthForm />
+        <div className="flex flex-col items-center gap-4 mt-40">
+          <Metric className="text-align">
+            Let&apos;s connect your Git provider
+          </Metric>
+          <AuthForm />
+        </div>
       </div>
     </div>
   );
