@@ -2,6 +2,7 @@
 
 import { useSupabase } from "@/app/supabase-provider";
 import { organizationCreateSchema } from "@/lib/validations/organization";
+import { projectCreateSchema } from "@/lib/validations/project";
 import { OfficeBuildingIcon } from "@heroicons/react/outline";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -13,16 +14,22 @@ import {
   TextInput,
   Title,
 } from "@tremor/react";
-import { redirect, useRouter } from "next/navigation";
+import {
+  redirect,
+  useParams,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from "sonner";
 import { z } from "zod";
 
-type FormData = z.infer<typeof organizationCreateSchema>;
+type FormData = z.infer<typeof projectCreateSchema>;
 
-export default function OrganizationForm() {
+export default function ProjectForm() {
   const { supabase } = useSupabase();
+  const params = useParams<{ org: string }>();
   const router = useRouter();
 
   const [isSaving, setIsSaving] = React.useState<boolean>(false);
@@ -32,7 +39,7 @@ export default function OrganizationForm() {
     register,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: zodResolver(organizationCreateSchema),
+    resolver: zodResolver(projectCreateSchema),
     defaultValues: {
       name: "",
     },
@@ -42,8 +49,14 @@ export default function OrganizationForm() {
     setIsSaving(true);
 
     const response = await supabase
-      .from("organization")
-      .insert({ name: data.name });
+      .from("project")
+      .insert({
+        name: data.name,
+        framework: "react",
+        organization_id: params.org,
+      })
+      .select()
+      .single();
 
     if (response.error) {
       toast.error("An error occured. Please try again.");
@@ -51,31 +64,20 @@ export default function OrganizationForm() {
       return;
     }
 
-    router.refresh();
+    router.push(`${response.data?.id}`);
   };
 
   return (
-    <Card className="max-w-md">
-      <Icon
-        icon={OfficeBuildingIcon}
-        color="orange"
-        variant="solid"
-        size="sm"
-        className="mb-4"
-      />
-      <Title>Your organization</Title>
-      <Subtitle>First, you must create a new organization.</Subtitle>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <TextInput
-          className="my-10"
-          placeholder="Name"
-          {...register("name")}
-        ></TextInput>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <TextInput
+        className="my-10 max-w-md"
+        placeholder="Name"
+        {...register("name")}
+      ></TextInput>
 
-        <Button type="submit" loading={isSaving}>
-          Create
-        </Button>
-      </form>
-    </Card>
+      <Button type="submit" loading={isSaving}>
+        Create
+      </Button>
+    </form>
   );
 }

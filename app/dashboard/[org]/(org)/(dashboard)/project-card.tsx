@@ -1,6 +1,5 @@
 "use client";
 
-import { Project } from "@/api/projects/routes";
 import { ArrowRightIcon } from "@heroicons/react/solid";
 import {
   AreaChart,
@@ -19,26 +18,28 @@ export default function ProjectCard({
   project,
   org,
 }: {
-  project: Project;
+  project: { id: string; name: string; framework: string };
   org: string;
 }) {
+  const total_events = 700;
+  const events = [];
   return (
     <Card>
       <Image
         width={24}
         height={24}
         alt="favicon"
-        src={`/projects/${project.id}.png`}
+        src={`/projects/${project.framework}.png`}
         className="mb-2"
       />
       <Title>{project.name}</Title>
       <Flex justifyContent="start" alignItems="baseline" className="space-x-2">
-        <Metric>{project.total_events}</Metric>
+        <Metric>{total_events}</Metric>
         <Text>Error events</Text>
       </Flex>
       <AreaChart
         className="mt-6 h-28"
-        data={project.events}
+        data={events}
         index="date"
         categories={["events"]}
         colors={["orange"]}
@@ -48,7 +49,7 @@ export default function ProjectCard({
         showYAxis={false}
         showLegend={false}
       />
-      <Link href={`${org}/projects/${project.slug}/issues`}>
+      <Link href={`${org}/projects/${project.id}/issues`}>
         <Button
           size="sm"
           variant="light"

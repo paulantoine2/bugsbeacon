@@ -6,25 +6,7 @@ import MetricsCards from "./metrics-cards";
 import { wait } from "@/api/utils";
 import { Issue } from "@/types/issue";
 import { getIssue } from "@/api/issues/routes";
-import { getProjects } from "@/api/projects/routes";
 import { notFound } from "next/navigation";
-
-async function getData(
-  project_slug: string,
-  issue_id: string
-): Promise<Issue | null> {
-  await wait();
-
-  const projects = await getProjects();
-
-  const project = projects.find((p) => p.slug === project_slug);
-
-  if (!project) return null;
-
-  const issue = await getIssue({ project_id: project.id, issue_id });
-
-  return issue;
-}
 
 export default async function IssueLayout({
   children,
@@ -49,7 +31,7 @@ export default async function IssueLayout({
     },
   ];
 
-  const issue = await getData(params.project, params.issue);
+  const issue = null;
 
   if (!issue) return notFound();
 

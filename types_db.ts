@@ -12,38 +12,49 @@ export interface Database {
       organization: {
         Row: {
           created_at: string
+          creator_id: string | null
           id: string
           name: string
         }
         Insert: {
           created_at?: string
+          creator_id?: string | null
           id?: string
           name: string
         }
         Update: {
           created_at?: string
+          creator_id?: string | null
           id?: string
           name?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "organization_creator_id_fkey"
+            columns: ["creator_id"]
+            isOneToOne: false
+            referencedRelation: "user"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       organization_member: {
         Row: {
           created_at: string
           organization_id: string
-          role: string
+          role: Database["public"]["Enums"]["Role"]
           user_id: string
         }
         Insert: {
           created_at?: string
           organization_id: string
-          role: string
+          role: Database["public"]["Enums"]["Role"]
           user_id: string
         }
         Update: {
           created_at?: string
           organization_id?: string
-          role?: string
+          role?: Database["public"]["Enums"]["Role"]
           user_id?: string
         }
         Relationships: [
@@ -66,28 +77,60 @@ export interface Database {
       project: {
         Row: {
           created_at: string
+          framework: Database["public"]["Enums"]["Framework"]
           id: string
           name: string
-          organisation_id: string
+          organization_id: string
         }
         Insert: {
           created_at?: string
+          framework: Database["public"]["Enums"]["Framework"]
           id?: string
           name: string
-          organisation_id: string
+          organization_id: string
         }
         Update: {
           created_at?: string
+          framework?: Database["public"]["Enums"]["Framework"]
           id?: string
           name?: string
-          organisation_id?: string
+          organization_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: "project_organisation_id_fkey"
-            columns: ["organisation_id"]
+            foreignKeyName: "project_organization_id_fkey"
+            columns: ["organization_id"]
             isOneToOne: false
             referencedRelation: "organization"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      project_key: {
+        Row: {
+          created_at: string
+          id: number
+          key: string | null
+          project_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          key?: string | null
+          project_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          key?: string | null
+          project_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_key_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "project"
             referencedColumns: ["id"]
           }
         ]
@@ -123,10 +166,22 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_organizations_for_user: {
+        Args: {
+          user_id: string
+        }
+        Returns: string[]
+      }
+      get_projects_for_user: {
+        Args: {
+          user_id: string
+        }
+        Returns: string[]
+      }
     }
     Enums: {
-      [_ in never]: never
+      Framework: "react"
+      Role: "owner"
     }
     CompositeTypes: {
       [_ in never]: never

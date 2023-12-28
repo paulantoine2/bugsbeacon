@@ -18,12 +18,14 @@ export default function ProjectLayout({
     {
       link: `/dashboard/${params.org}/projects/${params.project}/issues`,
       title: "Issues",
-      counter: 5,
     },
     {
       link: `/dashboard/${params.org}/projects/${params.project}/alerts`,
       title: "Alerts",
-      counter: 2,
+    },
+    {
+      link: `/dashboard/${params.org}/projects/${params.project}/settings`,
+      title: "Settings",
     },
   ];
   return (

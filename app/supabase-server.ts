@@ -20,7 +20,7 @@ export async function getSession() {
   }
 }
 
-export async function getOrganisation(id: string) {
+export async function getOrganization(id: string) {
   const supabase = createServerSupabaseClient();
   try {
     const { data: organization } = await supabase
@@ -29,6 +29,20 @@ export async function getOrganisation(id: string) {
       .eq("id", id)
       .single();
     return organization;
+  } catch (error) {
+    console.error("Error:", error);
+    return null;
+  }
+}
+
+export async function getProjects(organization_id: string) {
+  const supabase = createServerSupabaseClient();
+  try {
+    const { data: projects } = await supabase
+      .from("project")
+      .select()
+      .eq("organization_id", organization_id);
+    return projects;
   } catch (error) {
     console.error("Error:", error);
     return null;

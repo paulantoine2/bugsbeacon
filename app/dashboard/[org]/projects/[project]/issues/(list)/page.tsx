@@ -10,25 +10,14 @@ import IssuesTable from "./issues-table";
 import { Issue } from "@/types/issue";
 import { wait } from "@/api/utils";
 import { getIssues } from "@/api/issues/routes";
-import { getProjects } from "@/api/projects/routes";
 import { notFound } from "next/navigation";
-
-async function getData(slug: string): Promise<Issue[]> {
-  const projects = await getProjects();
-
-  const project = projects.find((p) => p.slug === slug);
-
-  if (!project) return [];
-
-  return getIssues({ project_id: project.id });
-}
 
 export default async function Issues({
   params,
 }: {
   params: { project: string };
 }) {
-  const data = await getData(params.project);
+  const data = [];
 
   return (
     <div className="container py-10 min-h-screen">

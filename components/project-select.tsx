@@ -4,18 +4,18 @@ import { useRouter, useSelectedLayoutSegments } from "next/navigation";
 import React from "react";
 
 import { Select, SelectItem } from "@tremor/react";
-import { Project } from "@/api/projects/routes";
+import { Project } from "@/types/project";
 
 export default function ProjectSelect({ projects }: { projects: Project[] }) {
   const segment = useSelectedLayoutSegments();
   const router = useRouter();
 
-  const project_slug = segment[0] === "projects" && segment[1];
-  const selected = projects.find((p) => p.slug === project_slug);
+  const selected_id = segment[0] === "projects" && segment[1];
+  const selected = projects.find((p) => p.id === selected_id);
 
-  if (!selected || !project_slug) return null;
+  if (!selected || !selected_id) return null;
 
-  const handleChange = (val: string) => {
+  const handleChange = (val: string): void => {
     const { pathname } = window.location;
     const parts = pathname.split("/").slice(0, 4);
     parts.push(val);
@@ -27,19 +27,29 @@ export default function ProjectSelect({ projects }: { projects: Project[] }) {
       <span>/</span>
       <Select
         className="max-w-xs ml-4"
-        value={project_slug}
+        value={selected_id}
         enableClear={false}
         onValueChange={handleChange}
         icon={() => (
-          <img src={`/projects/${selected.id}.png`} className="w-5 h-5" />
+          <div className="w-5 h-5 flex items-center">
+            <img
+              src={`/projects/${selected.framework}.png`}
+              className="w-full"
+            />
+          </div>
         )}
       >
         {projects.map((project) => (
           <SelectItem
             key={project.id}
-            value={project.slug}
+            value={project.id}
             icon={() => (
-              <img src={`/projects/${project.id}.png`} className="w-5 h-5" />
+              <div className="w-5 h-5 mr-2 flex items-center">
+                <img
+                  src={`/projects/${project.framework}.png`}
+                  className="w-full"
+                />
+              </div>
             )}
           >
             {project.name}
