@@ -12,7 +12,7 @@ export default function ProjectLayout({
   const items = [
     {
       link: `/dashboard/${params.org}/projects/${params.project}`,
-      title: "Dashboard",
+      title: "Overview",
       strict: true,
     },
     {
