@@ -5,10 +5,12 @@ import React from "react";
 
 import { Select, SelectItem } from "@tremor/react";
 import { Project } from "@/types/project";
+import { useAptabase } from "@aptabase/react";
 
 export default function ProjectSelect({ projects }: { projects: Project[] }) {
   const segment = useSelectedLayoutSegments();
   const router = useRouter();
+  const { trackEvent } = useAptabase();
 
   const selected_id = segment[0] === "projects" && segment[1];
   const selected = projects.find((p) => p.id === selected_id);
@@ -18,6 +20,7 @@ export default function ProjectSelect({ projects }: { projects: Project[] }) {
   const handleChange = (val: string): void => {
     const { pathname } = window.location;
     const parts = pathname.split("/").slice(0, 4);
+    trackEvent("changeProject", { val });
     parts.push(val);
     router.push(parts.join("/"));
   };

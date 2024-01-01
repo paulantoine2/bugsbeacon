@@ -5,6 +5,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import SupabaseProvider from "./supabase-provider";
 import { Toaster } from "sonner";
+import { AptabaseProvider } from "@aptabase/react";
 
 export const metadata: Metadata = {
   title: "BugsBeacon",
@@ -26,7 +27,11 @@ export default function RootLayout({
           GeistMono.variable
         }
       >
-        <SupabaseProvider>{children}</SupabaseProvider>
+        <SupabaseProvider>
+          <AptabaseProvider appKey="A-EU-5998282506">
+            {children}
+          </AptabaseProvider>
+        </SupabaseProvider>
         <Toaster position="bottom-right" theme="dark" richColors />
         <Analytics />
       </body>
