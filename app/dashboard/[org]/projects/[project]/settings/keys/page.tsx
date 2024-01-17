@@ -2,6 +2,7 @@ import { getProjectKeys } from "@/app/supabase-server";
 import {
   Button,
   Card,
+  Flex,
   Subtitle,
   Table,
   TableBody,
@@ -13,6 +14,8 @@ import {
   TextInput,
   Title,
 } from "@tremor/react";
+import DeleteKey from "./delete-key";
+import CreateKey from "./create-key";
 
 export default async function KeysPage({
   params,
@@ -23,13 +26,13 @@ export default async function KeysPage({
   return (
     <div className="min-h-screen">
       <Title>Project Keys</Title>
-      <Subtitle>
+      <Subtitle className="mb-6">
         These public keys allow you to identify the project sending the events
         and should be set in the SDK configuration. You can revoke a key to
         prevent abuses.
       </Subtitle>
       {keys && keys.length ? (
-        <Card className="mt-5">
+        <Card>
           <Table>
             <TableHead>
               <TableRow>
@@ -47,9 +50,7 @@ export default async function KeysPage({
                   </TableCell>
 
                   <TableCell>
-                    <Button size="xs" color="red">
-                      Revoke
-                    </Button>
+                    <DeleteKey id={item.id} />
                   </TableCell>
                 </TableRow>
               ))}
@@ -57,7 +58,12 @@ export default async function KeysPage({
           </Table>
         </Card>
       ) : (
-        <>No keys</>
+        <Card>
+          <Flex flexDirection="col" alignItems="center">
+            <Subtitle className="mb-4">No keys</Subtitle>
+            <CreateKey project_id={params.project} />
+          </Flex>
+        </Card>
       )}
     </div>
   );
