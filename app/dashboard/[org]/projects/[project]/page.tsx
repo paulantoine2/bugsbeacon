@@ -1,3 +1,4 @@
+import { getProjectKeys } from "@/app/supabase-server";
 import {
   Button,
   Card,
@@ -9,7 +10,13 @@ import {
   Title,
 } from "@tremor/react";
 
-export default function ProjectDashboard() {
+export default async function ProjectDashboard({
+  params,
+}: {
+  params: { org: string; project: string };
+}) {
+  const keys = await getProjectKeys(params.project);
+
   return (
     <div className="container py-10 min-h-screen">
       <Metric>Configure the SDK</Metric>
@@ -30,7 +37,9 @@ export default function ProjectDashboard() {
         lifecycle.
       </Subtitle>
       <Card className="mt-4">
-        <Text className="font-mono">Beacon.init({})</Text>
+        <Text className="font-mono">{`Beacon.init({
+          key: "${keys?.[0]?.key}"
+        })`}</Text>
       </Card>
       <Divider />
       <Title>3. Test</Title>
