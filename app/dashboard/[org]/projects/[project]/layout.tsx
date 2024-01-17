@@ -7,7 +7,7 @@ export default function ProjectLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: any;
+  params: { org: string; project: string };
 }) {
   const items = [
     {

@@ -94,3 +94,19 @@ export const getActiveProductsWithPrices = async () => {
   }
   return data ?? [];
 };
+
+export const getProjectKeys = async (project_id: string) => {
+  const supabase = createServerSupabaseClient();
+  try {
+    const { data: keys } = await supabase
+      .from("project_key")
+      .select()
+      .eq("project_id", project_id)
+      .throwOnError();
+
+    return keys;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};

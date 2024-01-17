@@ -16,7 +16,7 @@ export default function ProjectSettingsPage({
   params: { project: string };
 }) {
   return (
-    <div className="space-y-8 max-w-lg min-h-screen">
+    <div className="space-y-8 min-h-screen">
       <Card>
         <Title>Project Name</Title>
         <Text className="mb-4">

@@ -9,6 +9,29 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      customers: {
+        Row: {
+          id: string
+          stripe_customer_id: string | null
+        }
+        Insert: {
+          id: string
+          stripe_customer_id?: string | null
+        }
+        Update: {
+          id?: string
+          stripe_customer_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "customers_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       organization: {
         Row: {
           created_at: string
@@ -111,18 +134,21 @@ export interface Database {
           created_at: string
           id: number
           key: string | null
+          name: string
           project_id: string | null
         }
         Insert: {
           created_at?: string
           id?: number
           key?: string | null
+          name?: string
           project_id?: string | null
         }
         Update: {
           created_at?: string
           id?: number
           key?: string | null
+          name?: string
           project_id?: string | null
         }
         Relationships: [
