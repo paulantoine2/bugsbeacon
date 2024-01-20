@@ -7,10 +7,6 @@ import {
   TextInput,
 } from "@tremor/react";
 import IssuesTable from "./issues-table";
-import { Issue } from "@/types/issue";
-import { wait } from "@/api/utils";
-import { getIssues } from "@/api/issues/routes";
-import { notFound } from "next/navigation";
 
 export default async function Issues({
   params,
@@ -39,7 +35,7 @@ export default async function Issues({
           </div>
         </div>
       </div>
-      <IssuesTable data={data} />
+      <IssuesTable data={[]} />
     </div>
   );
 }

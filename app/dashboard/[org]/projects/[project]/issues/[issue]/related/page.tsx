@@ -2,17 +2,12 @@ import { Callout, Text, TextInput } from "@tremor/react";
 import IssuesTable from "../../(list)/issues-table";
 import { subDays } from "date-fns";
 import { InformationCircleIcon } from "@heroicons/react/solid";
-import { getIssue, getIssues } from "@/api/issues/routes";
-import { Issue } from "@/types/issue";
-import { wait } from "@/api/utils";
 
 export default async function IssueRelated({
   params,
 }: {
   params: { issue: string; project: string };
 }) {
-  const issues = [];
-
   return (
     <div className="py-6 space-y-6">
       <Callout
@@ -24,7 +19,7 @@ export default async function IssueRelated({
         In other words, their stack trace have only the first frame in common.
       </Callout>
       <TextInput placeholder="Search related issues..." />
-      <IssuesTable data={issues} />
+      <IssuesTable data={[]} />
     </div>
   );
 }

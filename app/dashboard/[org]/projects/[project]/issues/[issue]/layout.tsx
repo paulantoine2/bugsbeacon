@@ -3,10 +3,9 @@ import Submenu from "@/components/submenu";
 import { Badge, Grid, Metric, Subtitle } from "@tremor/react";
 import Actions from "./actions";
 import MetricsCards from "./metrics-cards";
-import { wait } from "@/api/utils";
-import { Issue } from "@/types/issue";
-import { getIssue } from "@/api/issues/routes";
+
 import { notFound } from "next/navigation";
+import { Issue } from "@/types/issue";
 
 export default async function IssueLayout({
   children,
@@ -31,7 +30,7 @@ export default async function IssueLayout({
     },
   ];
 
-  const issue = null;
+  const issue = null as Issue | null;
 
   if (!issue) return notFound();
 

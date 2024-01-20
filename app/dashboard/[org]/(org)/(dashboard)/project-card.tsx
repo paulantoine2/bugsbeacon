@@ -22,7 +22,7 @@ export default function ProjectCard({
   org: string;
 }) {
   const total_events = 700;
-  const events = [];
+
   return (
     <Card>
       <Image
@@ -39,7 +39,7 @@ export default function ProjectCard({
       </Flex>
       <AreaChart
         className="mt-6 h-28"
-        data={events}
+        data={[]}
         index="date"
         categories={["events"]}
         colors={["orange"]}
