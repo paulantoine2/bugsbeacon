@@ -18,10 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={
-          "min-h-screen font-sans antialiased dark:bg-dark-tremor-background " +
+          "min-h-screen font-sans antialiased dark:bg-dark-tremor-background  " +
           GeistSans.variable +
           " " +
           GeistMono.variable

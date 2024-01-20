@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 
+const colors = require("tailwindcss/colors");
 module.exports = {
-  // darkMode: "class",
+  darkMode: "class",
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -22,61 +23,61 @@ module.exports = {
         // light mode
         tremor: {
           brand: {
-            faint: "#fafafa", // blue-50
-            muted: "#e4e4e7", // blue-200
-            subtle: "#a1a1aa", // blue-400
-            DEFAULT: "#18181B", // blue-500
-            emphasis: "#3f3f46", // blue-700
-            inverted: "#ffffff", // white
+            faint: colors.zinc[50],
+            muted: colors.zinc[200],
+            subtle: colors.zinc[400],
+            DEFAULT: colors.white,
+            emphasis: colors.zinc[700],
+            inverted: colors.white,
           },
           background: {
-            muted: "#F4F4F5", // gray-50
-            subtle: "#F4F4F5", // gray-100
-            DEFAULT: "#ffffff", // white
-            emphasis: "#374151", // gray-700
+            muted: colors.zinc[50],
+            subtle: colors.zinc[100],
+            DEFAULT: colors.white,
+            emphasis: colors.zinc[700],
           },
           border: {
-            DEFAULT: "#E4E4E7", // gray-200
+            DEFAULT: colors.zinc[200],
           },
           ring: {
-            DEFAULT: "#E4E4E7", // gray-200
+            DEFAULT: colors.zinc[200],
           },
           content: {
-            subtle: "#71717A", // gray-400
-            DEFAULT: "#71717A", // gray-500
-            emphasis: "#09090B", // gray-700
-            strong: "#09090B", // gray-900
-            inverted: "#ffffff", // white
+            subtle: colors.zinc[400],
+            DEFAULT: colors.zinc[500],
+            emphasis: colors.zinc[700],
+            strong: colors.zinc[900],
+            inverted: colors.white,
           },
         },
         // dark mode
         "dark-tremor": {
           brand: {
-            faint: "#0B1229", // custom
-            muted: "#18181b", // blue-950
-            subtle: "#27272a", // blue-800
-            DEFAULT: "#e4e4e7", // blue-500
-            emphasis: "#a1a1aa", // blue-400
-            inverted: "#09090b", // gray-950
+            faint: colors.zinc[950],
+            muted: colors.zinc[300],
+            subtle: colors.zinc[200],
+            DEFAULT: colors.zinc[100],
+            emphasis: colors.zinc[50],
+            inverted: colors.zinc[950],
           },
           background: {
-            muted: "#18181b", // custom
-            subtle: "#18181b", // gray-800
-            DEFAULT: "#09090b", // gray-900
-            emphasis: "#d4d4d8", // gray-300
+            muted: colors.zinc[800],
+            subtle: colors.zinc[800],
+            DEFAULT: colors.zinc[900],
+            emphasis: colors.zinc[300],
           },
           border: {
-            DEFAULT: "#27272A", // gray-800
+            DEFAULT: colors.zinc[700],
           },
           ring: {
-            DEFAULT: "#27272A", // gray-800
+            DEFAULT: colors.zinc[700],
           },
           content: {
-            subtle: "#A1A1AA", // gray-600
-            DEFAULT: "#A1A1AA", // gray-500
-            emphasis: "#FAFAFA", // gray-200
-            strong: "#FAFAFA", // gray-50
-            inverted: "#000000", // black
+            subtle: colors.zinc[500],
+            DEFAULT: colors.zinc[400],
+            emphasis: colors.zinc[100],
+            strong: colors.zinc[50],
+            inverted: colors.zinc[950],
           },
         },
       },
@@ -100,7 +101,7 @@ module.exports = {
         "tremor-full": "9999px",
       },
       fontSize: {
-        "tremor-label": ["0.75rem"],
+        "tremor-label": ["0.75rem", { lineHeight: "1rem" }],
         "tremor-default": ["0.875rem", { lineHeight: "1.25rem" }],
         "tremor-title": ["1.125rem", { lineHeight: "1.75rem" }],
         "tremor-metric": ["1.875rem", { lineHeight: "2.25rem" }],
@@ -140,5 +141,5 @@ module.exports = {
         /^(fill-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
     },
   ],
-  plugins: [require("@headlessui/tailwindcss")],
+  plugins: [require("@headlessui/tailwindcss"), require("@tailwindcss/forms")],
 };

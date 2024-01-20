@@ -18,7 +18,7 @@ export default async function Navbar() {
       ) : (
         <>
           <a href="https://sandbox.bugsbeacon.com">
-            <Button variant="secondary" className="!border-zinc-800">
+            <Button variant="secondary" className="!border-zinc-700">
               Discover with Sandbox
             </Button>
           </a>

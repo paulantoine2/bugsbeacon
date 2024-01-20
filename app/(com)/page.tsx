@@ -46,7 +46,7 @@ export default function Home() {
               <Button
                 variant="secondary"
                 size="lg"
-                className="!border-zinc-800"
+                className="!border-zinc-700"
               >
                 Discover with Sandbox
               </Button>

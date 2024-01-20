@@ -10,7 +10,7 @@ export default function DasboardButton() {
     <Link href="/dashboard">
       <Button
         variant="secondary"
-        className="!border-zinc-800"
+        className="!border-zinc-700"
         icon={ArrowRightIcon}
         iconPosition="right"
       >

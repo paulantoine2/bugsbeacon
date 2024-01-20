@@ -39,16 +39,12 @@ export default async function UserLayout({
           {projects && <ProjectSelect projects={projects} />}
         </div>
         <div className="flex items-center gap-6">
-          <Button variant="secondary" className="!border-zinc-800">
-            Feedback
-          </Button>
-          <Link href="/roadmap">
+          {/* <Link href="/roadmap">
             <Button variant="light">Roadmap</Button>
           </Link>
           <Link href="/docs">
             <Button variant="light">Docs</Button>
-          </Link>
-
+          </Link> */}
           <UserNav user={user} />
         </div>
       </nav>

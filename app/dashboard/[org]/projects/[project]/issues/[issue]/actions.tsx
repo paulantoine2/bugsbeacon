@@ -11,7 +11,7 @@ export default function Actions() {
         variant="secondary"
         iconPosition="right"
         icon={ChevronDownIcon}
-        className="!border-zinc-800"
+        className="!border-zinc-700"
       >
         Ignore
       </Button>
